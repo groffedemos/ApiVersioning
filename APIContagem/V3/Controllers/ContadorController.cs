@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using APIContagem.V2.Models;
+using APIContagem.V3.Models;
 
-namespace APIContagem.V2.Controllers
+namespace APIContagem.V3.Controllers
 {
     [ApiController]
-    [ApiVersion("2.0")]
-    [ApiVersion("2.1")]
+    [ApiVersion("3.0")]
     [Route("[controller]")]
     [Route("v{version:apiVersion}/[controller]")]
     public class ContadorController : ControllerBase
@@ -24,7 +23,7 @@ namespace APIContagem.V2.Controllers
         }
 
         [HttpGet]
-        public ResultadoContador GetV2_0()
+        public ResultadoContador GetV3_0()
         {
             int valorAtualContador;
             lock (_CONTADOR)
@@ -38,11 +37,12 @@ namespace APIContagem.V2.Controllers
             return new()
             {
                 ValorAtual = valorAtualContador,
-                Versao = "2.x",
+                Versao = "3.0",
                 Local = _CONTADOR.Local,
                 Kernel = _CONTADOR.Kernel,
                 TargetFramework = _CONTADOR.TargetFramework,
-                Mensagem = _configuration["MensagemVariavel"]
+                Mensagem = _configuration["MensagemVariavel"],
+                Saudacao = "Bem-vindos a mais uma live"
             };
         }
     }
