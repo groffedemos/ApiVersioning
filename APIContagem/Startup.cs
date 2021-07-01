@@ -41,7 +41,7 @@ namespace APIContagem
                 options.ReportApiVersions = true;
 
                 options.AssumeDefaultVersionWhenUnspecified = true;
-                options.DefaultApiVersion = new ApiVersion(1, 1);
+                options.DefaultApiVersion = new ApiVersion(3, 0);
             });
 
             services.AddVersionedApiExplorer(options =>
